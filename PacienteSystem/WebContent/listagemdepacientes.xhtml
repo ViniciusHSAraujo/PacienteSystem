@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/recursos/template/template.xhtml">
+
+	<ui:define name="tituloPagina"></ui:define>
+	<ui:define name="tituloPrincipal"></ui:define>
+	<ui:define name="tituloSecundario"></ui:define>
+
+	<ui:define name="botoesAcao">
+
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<b:dataTable value="#{pacienteBean.listarPacientes()}" var="paciente">
+			<b:dataTableColumn label="Ações" >
+				    <b:commandButton value="Excluir" action="#{pacienteBean.excluirPaciente(paciente)}" ajax="true" update="@form" look="danger"/>
+			</b:dataTableColumn>
+			<b:dataTableColumn value="#{paciente.nomeDoPaciente}" label="Nome" />
+			<b:dataTableColumn value="#{paciente.idadeDoPaciente}" label="Idade" />
+			<b:dataTableColumn value="#{paciente.CPF}" label="CPF" />		
+			<b:dataTableColumn value="#{paciente.qualOSexo}" label="Sexo" />		
+			<b:dataTableColumn value="#{paciente.dataDeInternacao}" label="Data de Internação" />		
+				
+		</b:dataTable>
+
+	</ui:define>
+
+</ui:composition>
+</html>
